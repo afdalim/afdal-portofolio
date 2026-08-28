@@ -86,9 +86,7 @@ function CV() {
                   </h3>
 
                   <p className="mt-5 max-w-2xl text-sm leading-relaxed text-gray-500 sm:mt-6 sm:text-base md:text-lg">
-                    Mahasiswa Sistem Informasi dengan ketertarikan pada
-                    teknologi, pengembangan digital, karya kreatif, serta
-                    berbagai kegiatan organisasi dan pengembangan diri.
+                    Pribadi yang senang belajar, berkarya, mencoba hal baru, dan terus berkembang melalui setiap pengalaman.
                   </p>
 
                   {/* ================= QUICK INFO ================= */}

@@ -16,6 +16,10 @@ const journalItems = [
     accent: '01',
     media: [
       '/journal/sertifikat-frontend.pdf',
+      '/journal/website1.png',
+      '/journal/website2.png',
+      '/journal/website3.png',
+      '/journal/website4.png',
     ],
   },
 
@@ -32,6 +36,9 @@ const journalItems = [
     accent: '02',
     media: [
       '/journal/skfanmas.pdf',
+      '/journal/fanmas1.jpeg',
+      '/journal/fanmas3.jpeg',
+      '/journal/fanmas2.jpeg',
     ],
   },
 
@@ -80,6 +87,10 @@ const journalItems = [
     accent: '05',
     media: [
       '/journal/ketuapanitia.pdf',
+      '/journal/paskah1.jpeg',
+      '/journal/paskah2.jpeg',
+      '/journal/paskah3.jpeg',
+      '/journal/paskah4.mp4',
     ],
   },
 
@@ -96,6 +107,9 @@ const journalItems = [
     accent: '06',
     media: [
    '/journal/jakaaptik.pdf',
+   '/journal/jakaaptik1.jpeg',
+   '/journal/jakaaptik2.jpeg',
+   '/journal/jakaaptik3.mp4',
     ],
   },
 
@@ -112,6 +126,9 @@ const journalItems = [
     accent: '07',
     media: [
       '/journal/pkkmb.pdf',
+      '/journal/pkkmb1.jpeg',
+      '/journal/pkkmb2.jpeg',
+      '/journal/pkkmb3.mp4',
     ],
   },
 
@@ -138,6 +155,14 @@ function getMediaType(path) {
   const extension = path.split('.').pop()?.toLowerCase()
 
   if (extension === 'pdf') return 'pdf'
+
+  if (
+    extension === 'mp4' ||
+    extension === 'webm' ||
+    extension === 'mov'
+  ) {
+    return 'video'
+  }
 
   return 'image'
 }
@@ -481,21 +506,33 @@ function Blog() {
                     {/* Media */}
                     <div className="relative flex min-h-[280px] flex-1 items-center justify-center bg-black p-4 sm:min-h-[420px] sm:p-8 md:min-h-[520px]">
 
-                      {getMediaType(
-                        selectedItem.media[activeMedia],
-                      ) === 'pdf' ? (
-                        <iframe
-                          src={`${selectedItem.media[activeMedia]}#toolbar=0&navpanes=0`}
-                          title={`${selectedItem.title} documentation`}
-                          className="h-[55vh] w-full max-w-5xl rounded-lg border border-white/10 bg-white sm:h-[65vh]"
-                        />
-                      ) : (
-                        <img
-                          src={selectedItem.media[activeMedia]}
-                          alt={`${selectedItem.title} documentation ${activeMedia + 1}`}
-                          className="max-h-[65vh] max-w-full rounded-lg object-contain"
-                        />
-                      )}
+                     {getMediaType(
+  selectedItem.media[activeMedia],
+) === 'pdf' ? (
+  <iframe
+    src={`${selectedItem.media[activeMedia]}#toolbar=0&navpanes=0`}
+    title={`${selectedItem.title} documentation`}
+    className="h-[55vh] w-full max-w-5xl rounded-lg border border-white/10 bg-white sm:h-[65vh]"
+  />
+) : getMediaType(
+    selectedItem.media[activeMedia],
+  ) === 'video' ? (
+  <video
+  src={selectedItem.media[activeMedia]}
+  controls
+  playsInline
+  preload="metadata"
+  className="max-h-[65vh] w-full max-w-5xl rounded-2xl border border-white/10 object-contain"
+>
+  Your browser does not support the video tag.
+</video>
+) : (
+  <img
+    src={selectedItem.media[activeMedia]}
+    alt={`${selectedItem.title} documentation ${activeMedia + 1}`}
+    className="max-h-[65vh] max-w-full rounded-lg object-contain"
+  />
+)}
 
                       {/* Previous */}
                       {selectedItem.media.length > 1 && (

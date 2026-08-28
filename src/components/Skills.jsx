@@ -3,19 +3,84 @@ import Reveal from './Reveal'
 const skills = [
   {
     category: 'Development',
-    items: ['Vue.js', 'Laravel', 'React', 'HTML', 'JavaScript'],
+    items: [
+      {
+        name: 'Vue.js',
+        url: 'https://project-ecommerce-frontend.vercel.app/',
+      },
+      {
+        name: 'Laravel',
+        url: '',
+      },
+      {
+        name: 'React',
+        url: '',
+      },
+      {
+        name: 'HTML',
+        url: '',
+      },
+      {
+        name: 'JavaScript',
+        url: 'https://personalbudgeting-umber.vercel.app/login',
+      },
+    ],
   },
   {
     category: 'Database',
-    items: ['MySQL', 'Laragon', 'Database Management'],
+    items: [
+      {
+        name: 'MySQL',
+        url: '',
+      },
+      {
+        name: 'Laragon',
+        url: '',
+      },
+      {
+        name: 'Database Management',
+        url: '',
+      },
+    ],
   },
   {
     category: 'Design',
-    items: ['Canva', 'CapCut', 'Figma'],
+    items: [
+      {
+        name: 'Canva',
+        url: 'https://drive.google.com/drive/folders/1x0HPUMTPiRQOIjgWpEZm6pnktbVjoIVk?usp=sharing',
+      },
+      {
+        name: 'CapCut',
+        url: 'https://drive.google.com/drive/folders/1x0HPUMTPiRQOIjgWpEZm6pnktbVjoIVk?usp=sharing',
+      },
+      {
+        name: 'Figma',
+        url: 'https://www.figma.com/design/GOwJb0cRmZXICq8HNHifsf/Prototype-IMK---APK-Catatan-Android?m=auto&t=TwpMmeQmIwFWAZqP-1',
+      },
+    ],
   },
   {
     category: 'Tools',
-    items: ['Git', 'GitHub', 'VS Code', 'Postman']},
+    items: [
+      {
+        name: 'Git',
+        url: '',
+      },
+      {
+        name: 'GitHub',
+        url: 'https://github.com/afdalim',
+      },
+      {
+        name: 'VS Code',
+        url: '',
+      },
+      {
+        name: 'Postman',
+        url: '',
+      },
+    ],
+  },
 ]
 
 function Skills() {
@@ -62,14 +127,88 @@ function Skills() {
 
                 {/* Items */}
                 <div className="flex flex-wrap gap-3">
-                  {skill.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-white/10 px-5 py-3 text-sm text-gray-400 transition-all duration-300 hover:border-white/30 hover:bg-white/[0.04] hover:text-white"
-                    >
-                      {item}
-                    </span>
-                  ))}
+
+                  {skill.items.map((item) => {
+
+                    const hasLink =
+                      item.url &&
+                      item.url.trim() !== ''
+
+                    if (hasLink) {
+                      return (
+                        <a
+                          key={item.name}
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="
+                            group
+                            inline-flex
+                            items-center
+                            gap-2
+                            rounded-full
+                            border
+                            border-white/10
+                            px-5
+                            py-3
+                            text-sm
+                            text-gray-400
+                            transition-all
+                            duration-300
+                            hover:border-white/30
+                            hover:bg-white/[0.04]
+                            hover:text-white
+                            hover:-translate-y-0.5
+                          "
+                        >
+                          <span>
+                            {item.name}
+                          </span>
+
+                          <span
+                            className="
+                              text-xs
+                              text-gray-600
+                              opacity-0
+                              -translate-x-1
+                              transition-all
+                              duration-300
+                              group-hover:translate-x-0
+                              group-hover:text-white
+                              group-hover:opacity-100
+                            "
+                          >
+                            ↗
+                          </span>
+                        </a>
+                      )
+                    }
+
+                    return (
+                      <span
+                        key={item.name}
+                        className="
+                          inline-flex
+                          items-center
+                          rounded-full
+                          border
+                          border-white/10
+                          px-5
+                          py-3
+                          text-sm
+                          text-gray-400
+                          transition-all
+                          duration-300
+                          hover:border-white/30
+                          hover:bg-white/[0.04]
+                          hover:text-white
+                        "
+                      >
+                        {item.name}
+                      </span>
+                    )
+                  })}
+
                 </div>
 
               </div>
