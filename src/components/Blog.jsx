@@ -39,6 +39,7 @@ const journalItems = [
       '/journal/fanmas1.jpeg',
       '/journal/fanmas3.jpeg',
       '/journal/fanmas2.jpeg',
+      '/journal/fanmas4.mp4',
     ],
   },
 
